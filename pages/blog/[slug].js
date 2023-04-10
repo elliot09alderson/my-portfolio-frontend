@@ -3,8 +3,16 @@ import Head from "next/head";
 import { createClient } from "next-sanity";
 import PortableText from "react-portable-text";
 import NavBar from "@/components/NavBar";
+import imageUrlBuilder from "@sanity/image-url";
+
 
 const Post = ({ blog,profile }) => {
+  const client = createClient({
+    projectId: "qp32vyme",
+    dataset: "production",
+    useCdn: true,
+  });
+  const builder = imageUrlBuilder(client);
   const router = useRouter();
   const { slug } = router.query;
   return (
@@ -31,16 +39,16 @@ const Post = ({ blog,profile }) => {
 
         <meta
           name="description"
-          content="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          content={profile.desc}
         />
 
-        <link rel="icon" type="image/png" href="/assets/img/favicon.png" />
+        <link rel="icon" type="image/png" href="/public/assets/img/mylogo.png" />
 
         <meta name="theme-color" content="#5540af" />
 
         <meta property="og:site_name" content="Atom Template" />
 
-        <meta property="og:image" content="//assets/img/social.jpg" />
+        <meta property="og:image" content="//assets/img/mylogo.jpg" />
 
         <meta name="twitter:card" content="summary_large_image" />
 
@@ -104,17 +112,17 @@ const Post = ({ blog,profile }) => {
                 <div class="flex items-center pt-5 md:pt-10">
                   <div>
                     <img
-                      src="/assets/img/blog-author.jpg"
+                      src={builder.image(profile.image).url()}
                       class="h-20 w-20 rounded-full border-2 border-grey-70 shadow"
                       alt="author image"
                     />
                   </div>
                   <div class="pl-5">
                     <span class="block font-body text-xl font-bold text-grey-10">
-                     {blog.author.name}
+                     {profile.title}
                     </span>
                     <span class="block pt-1 font-body text-xl font-bold text-grey-30">
-                      February 27, 2022
+                     {blog.launchAt}
                     </span>
                   </div>
                 </div>
@@ -148,39 +156,7 @@ const Post = ({ blog,profile }) => {
                   <i class="bx bx-right-arrow-alt text-2xl text-primary"></i>
                 </a>
               </div>
-              <div class="flex flex-col items-center border-t border-lila py-12 pt-12 md:flex-row md:items-start xl:pb-20">
-                <div class="w-3/4 sm:w-2/5 lg:w-1/4 xl:w-1/5">
-                  <img
-                    src="/assets/img/blog-author.jpg"
-                    class="rounded-full shadow"
-                    alt="author image"
-                  />
-                </div>
-                <div class="ml-0 text-center md:ml-10 md:w-5/6 md:text-left">
-                  <h3 class="pt-10 font-body text-2xl font-bold text-secondary md:pt-0">
-                    Christy Smith
-                  </h3>
-                  <p class="pt-5 font-body text-lg leading-8 text-secondary sm:leading-9 md:text-xl md:leading-9 lg:leading-9 xl:leading-9">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit.
-                  </p>
-                  <div class="flex items-center justify-center pt-5 md:justify-start">
-                    <a href={profile.github}>
-                      <i class="bx bxl-github text-2xl text-primary hover:text-yellow"></i>
-                    </a>
-                    
-                    <a href={profile.linkedin} class="pl-4">
-                      <i class="bx bxl-linkedin text-2xl text-primary hover:text-yellow"></i>
-                    </a>
-                    <a href={profile.insta} class="pl-4">
-                      <i class="bx bxl-instagram text-2xl text-primary hover:text-yellow"></i>
-                    </a>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
@@ -188,7 +164,7 @@ const Post = ({ blog,profile }) => {
         <div class="bg-primary">
           <div class="container flex flex-col justify-between py-6 sm:flex-row">
             <p class="text-center font-body text-white md:text-left">
-              © Copyright 2022. All right reserved, ATOM.
+              © Copyright 2023. All right reserved, Er.pratik.
             </p>
             <div class="flex items-center justify-center pt-5 sm:justify-start sm:pt-0">
               <a href={profile.github}>
