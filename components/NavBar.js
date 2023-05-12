@@ -2,10 +2,21 @@ import React from "react";
 import { createClient } from "next-sanity";
 
 export default function NavBar({ profile }) {
+function OpenSidebar(){
+  let list = document.getElementById('open')
+  list.classList.remove('pointer-events-none')
+  list.classList.remove('opacity-0')
+}
+function closeSideBar(){
+  let close = document.getElementById('open')
+  close.classList.add('pointer-events-none')
+  close.classList.add('opacity-0')
+}
+
   return (
     <div id="main" className="relative">
-      <div className="w-full z-50 top-0 py-4 sm:py-5  bg-primary ">
-        <div className="container flex items-center justify-between mx-auto">
+      <div className="w-full z-40 top-0 py-4 static sm:py-5  bg-primary ">
+        <div className="container flex items-center static justify-between mx-auto">
           <div>
             <a href="/">
               <h2 className="text-white text-2xl font-bold">{profile.title}</h2>
@@ -103,20 +114,20 @@ export default function NavBar({ profile }) {
             </ul>
           </div>
           <div className="block lg:hidden">
-            <button>
+            <button onClick={OpenSidebar} >
               <i className="bx bx-menu text-4xl text-white"></i>
             </button>
           </div>
         </div>
       </div>
 
-      <div className="pointer-events-none fixed inset-0 z-70 min-h-screen bg-black bg-opacity-70 opacity-0 transition-opacity lg:hidden">
-        <div className="absolute right-0 min-h-screen w-2/3 bg-primary py-4 px-8 shadow md:w-1/3">
-          <button className="absolute top-0 right-0 mt-4 mr-4">
+      <div id="open"  onClick={closeSideBar} className=" fixed z-[999] inset-0 min-h-screen bg-black bg-opacity-70  opacity-0 pointer-events-none transition-opacity lg:hidden">
+        <div className="absolute right-0 min-h-screen w-2/3 bg-primary py-4 px-8 shadow md:w-1/3  ">
+          <button onClick={closeSideBar} className="absolute top-0 right-0 mt-4 mr-4  ">
             <img
               src="./assets/img/icon-close.svg"
               className="h-10 w-auto"
-              alt=""
+              alt="" 
             />
           </button>
 
