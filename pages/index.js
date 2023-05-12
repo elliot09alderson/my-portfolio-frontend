@@ -331,7 +331,7 @@ export default function Home({ blogs, profile, project, experience, skills }) {
           </div>
         </div>
 
-        <div className="bg-grey-50" id="clients">
+        {/* <div className="bg-grey-50" id="clients">
           <div className="container py-16 md:py-20">
             <div className="mx-auto w-full sm:w-3/4 lg:w-full">
               <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
@@ -379,7 +379,7 @@ export default function Home({ blogs, profile, project, experience, skills }) {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="container py-16 md:py-20" id="work">
           <h2 className="text-center font-header text-4xl font-semibold uppercase text-primary sm:text-5xl lg:text-6xl">
@@ -456,7 +456,7 @@ export default function Home({ blogs, profile, project, experience, skills }) {
                   </div>
                   <div className="pt-5 md:pl-5 md:pt-0">
                     <h1 className="font-body text-2xl font-bold text-primary md:text-4xl">
-                      12
+                      16
                     </h1>
                     <h4 className="text-grey-dark font-header text-base font-medium leading-loose md:text-xl">
                       Finished Projects
