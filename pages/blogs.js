@@ -54,7 +54,7 @@ const Blog = ({blogs,profile}) => {
         <meta name="twitter:site" content="@tailwindmade" />
 
         <link
-          crossorigin="crossorigin"
+          crossOrigin="crossOrigin"
           href="https://fonts.gstatic.com"
           rel="preconnect"
         />
@@ -76,7 +76,7 @@ const Blog = ({blogs,profile}) => {
         />
 
         <link
-          crossorigin="anonymous"
+          crossOrigin="anonymous"
           href="/assets/styles/main.min.css"
           media="screen"
           rel="stylesheet"
